@@ -119,6 +119,8 @@ Complete support for `Relay`_.
 Custom
 ------
 
+Your mutation must be a subclass of ``SocialAuth`` or ``SocialAuthJWT``.
+
 .. code:: python
 
     import graphene
@@ -145,5 +147,5 @@ Custom
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-graphql-social.svg
    :target: https://codecov.io/gh/flavors/django-graphql-social
 
-.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/.../maintainability
+.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/6f8b21f374ecb7918991/maintainability
    :target: https://codeclimate.com/github/flavors/django-graphql-social
