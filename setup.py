@@ -31,6 +31,7 @@ setup(
     packages=find_packages(exclude=['tests*']),
     install_requires=[
         'Django>=1.11',
+        'django-filter>=1.1.0',
         'graphene-django>=2.0.0',
         'social-auth-app-django>=2.1.0',
     ],
@@ -53,6 +54,7 @@ setup(
     zip_safe=False,
     tests_require=[
         'Django>=1.11',
+        'django-filter>=1.1.0',
         'graphene-django>=2.0.0',
         'social-auth-app-django>=2.1.0',
     ],
