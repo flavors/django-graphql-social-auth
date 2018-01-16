@@ -1,6 +1,6 @@
 # Domake.io i18n
 # Copyright (C) mongkok 2018
-# This file is distributed under the same license as the django-graphql-social package.
+# This file is distributed under the same license as the django-graphql-social-auth package.
 # Translators:
 # mongkok <domake.io@gmail.com>, 2018.
 #

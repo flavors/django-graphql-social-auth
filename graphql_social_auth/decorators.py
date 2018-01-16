@@ -11,7 +11,7 @@ from . import exceptions
 
 def social_auth(f):
     @wraps(f)
-    def wrapper(cls, root, info, provider, access_token, **kwargs):
+    def wrapper(cls, root, info, provider, access_token, *args, **kwargs):
         strategy = load_strategy(info.context)
         try:
             backend = load_backend(strategy, provider, redirect_uri=None)
