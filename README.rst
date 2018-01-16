@@ -147,16 +147,16 @@ Gracias `Matías`_.
 
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/django-graphql-social-auth.svg
-   :target: https://pypi.python.org/pypi/django-graphql-social
+   :target: https://pypi.python.org/pypi/django-graphql-social-auth
 
 .. |Wheel| image:: https://img.shields.io/pypi/wheel/django-graphql-social-auth.svg
-   :target: https://pypi.python.org/pypi/django-graphql-social
+   :target: https://pypi.python.org/pypi/django-graphql-social-auth
 
 .. |Build Status| image:: https://travis-ci.org/flavors/django-graphql-social-auth.svg?branch=master
-   :target: https://travis-ci.org/flavors/django-graphql-social
+   :target: https://travis-ci.org/flavors/django-graphql-social-auth
 
 .. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-graphql-social-auth.svg
-   :target: https://codecov.io/gh/flavors/django-graphql-social
+   :target: https://codecov.io/gh/flavors/django-graphql-social-auth
 
-.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/6f8b21f374ecb7918991/maintainability
-   :target: https://codeclimate.com/github/flavors/django-graphql-social
+.. |Code Climate| image:: https://api.codeclimate.com/v1/badges/c579bcfde0fbb7f6334c/maintainability
+   :target: https://codeclimate.com/github/flavors/django-graphql-social-auth
