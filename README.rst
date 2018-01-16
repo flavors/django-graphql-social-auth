@@ -45,7 +45,7 @@ Add the ``SocialAuth`` mutation to your GraphQL schema.
 
 `Session`_ authentication via *access_token*.
 
-.. _documentation: https://docs.djangoproject.com/en/2.0/topics/http/sessions/
+.. _Session: https://docs.djangoproject.com/en/2.0/topics/http/sessions/
 
 
 .. code:: graphql
