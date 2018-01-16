@@ -12,7 +12,7 @@ class DecoratorsTests(TestCase):
     def test_missing_backend(self):
 
         @decorators.social_auth
-        def wrapped(self, root, info, provider, *args, **kwargs):
+        def wrapped(self, root, info, provider, *args):
             """Social auth decorated function"""
 
         mock = MagicMock()
@@ -24,10 +24,9 @@ class DecoratorsTests(TestCase):
         @social_auth_mock
         @override_settings(SOCIAL_AUTH_PIPELINE=[])
         @decorators.social_auth
-        def wrapped(self, root, info, provider, *args, **kwargs):
+        def wrapped(self, root, info, provider, *args):
             """Social auth decorated function"""
 
         mock = MagicMock()
-
         with self.assertRaises(exceptions.GraphQLSocialError):
             wrapped(self, mock, mock, 'google-oauth2', '-token-')
