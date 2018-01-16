@@ -2,7 +2,7 @@ from unittest.mock import MagicMock, PropertyMock
 
 from django.test import TestCase
 
-from graphql_social import pipelines
+from graphql_social_auth import pipelines
 
 
 class PioelinesTests(TestCase):

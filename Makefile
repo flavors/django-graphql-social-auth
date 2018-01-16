@@ -6,13 +6,13 @@ help:
 	@echo "  release     Makes a release"
 
 test:
-	@pytest tests --pdb
+	@pytest tests
 
 coverage:
 	@pytest\
 		--flake8\
 		--verbose\
-		--cov graphql_social\
+		--cov graphql_social_auth\
 		--cov-config .coveragerc\
 		--cov-report term\
 		--cov-report xml\

@@ -1,6 +1,6 @@
 import graphene
 
-import graphql_social
+import graphql_social_auth
 
 from . import mixins
 from .testcases import GraphQLSocialTestCase
@@ -9,7 +9,7 @@ from .testcases import GraphQLSocialTestCase
 class SocialAuthTests(mixins.SocialAuthTestsMixin, GraphQLSocialTestCase):
 
     class Mutations(graphene.ObjectType):
-        social_auth = graphql_social.relay.SocialAuth.Field()
+        social_auth = graphql_social_auth.relay.SocialAuth.Field()
 
     def execute(self, input):
         query = '''
@@ -31,7 +31,7 @@ class SocialAuthJWTTests(mixins.SocialAuthTestsMixin,
                          GraphQLSocialTestCase):
 
     class Mutations(graphene.ObjectType):
-        social_auth = graphql_social.relay.SocialAuthJWT.Field()
+        social_auth = graphql_social_auth.relay.SocialAuthJWT.Field()
 
     def execute(self, input):
         query = '''

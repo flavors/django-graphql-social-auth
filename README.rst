@@ -1,5 +1,5 @@
-Django GraphQL Social
-=====================
+Django GraphQL Social Auth
+==========================
 
 |Pypi| |Wheel| |Build Status| |Codecov| |Code Climate|
 
@@ -37,14 +37,14 @@ Add the ``SocialAuth`` mutation to your GraphQL schema.
 .. code:: python
 
     import graphene
-    import graphql_social
+    import graphql_social_auth
 
 
     class Mutations(graphene.ObjectType):
-        social_auth = graphql_social.SocialAuth.Field()
+        social_auth = graphql_social_auth.SocialAuth.Field()
 
+Authenticate via *access_token*.
 
-Query
 
 .. code:: graphql
 
@@ -58,14 +58,16 @@ Query
     }
 
 
-JWT (JSON Web Token)
+JSON Web Token (JWT)
 --------------------
+
+Authentication solution based on `JSON Web Token`_.
 
 Install additional requirements.
 
 .. code:: sh
 
-    pip install 'django-graphql-social[jwt]'
+    pip install 'django-graphql-social-auth[jwt]'
 
 
 Add the ``SocialAuthJWT`` mutation to your GraphQL schema.
@@ -73,14 +75,14 @@ Add the ``SocialAuthJWT`` mutation to your GraphQL schema.
 .. code:: python
 
     import graphene
-    import graphql_social
+    import graphql_social_auth
 
 
     class Mutations(graphene.ObjectType):
-        social_auth = graphql_social.SocialAuthJWT.Field()
+        social_auth = graphql_social_auth.SocialAuthJWT.Field()
 
 
-Query
+Authenticate via *access_token* to obtain a JSON Web Token.
 
 .. code:: graphql
 
@@ -93,6 +95,8 @@ Query
       }
     }
 
+.. _JSON Web Token: https://jwt.io/
+
 
 Relay
 -----
@@ -104,47 +108,54 @@ Complete support for `Relay`_.
 .. code:: python
 
     import graphene
-    import graphql_social
+    import graphql_social_auth
 
 
     class Mutations(graphene.ObjectType):
-        social_auth = graphql_social.relay.SocialAuth.Field()
+        social_auth = graphql_social_auth.relay.SocialAuth.Field()
 
 
-``graphql_social.relay.SocialAuthJWT`` for `JSON Web Token`_.
-
-.. _JSON Web Token: https://jwt.io/
+``graphql_social_auth.relay.SocialAuthJWT`` for `JSON Web Token (JWT)`_ authentication.
 
 
-Custom
-------
+Customizing
+-----------
 
-Your mutation must be a subclass of ``SocialAuth`` or ``SocialAuthJWT``.
+Some kinds of projects may have authentication requirements for which ``SocialAuth`` mutation is not always appropriate.
+
+You can override the default *payload* by providing a subclass of ``SocialAuth`` or ``SocialAuthJWT``.
 
 .. code:: python
 
     import graphene
-    import graphql_social
+    import graphql_social_auth
 
 
-    class SocialAuth(graphql_social.SocialAuth):
+    class SocialAuth(graphql_social_auth.SocialAuth):
         user = graphene.Field(UserType)
 
         @classmethod
-        def do_auth(cls, info, social, **args):
+        def do_auth(cls, info, social, **kwargs):
             return cls(social=social, user=social.user)
 
 
-.. |Pypi| image:: https://img.shields.io/pypi/v/django-graphql-social.svg
+----
+
+Gracias `Matías`_.
+
+.. _Matías: https://github.com/omab
+
+
+.. |Pypi| image:: https://img.shields.io/pypi/v/django-graphql-social-auth.svg
    :target: https://pypi.python.org/pypi/django-graphql-social
 
-.. |Wheel| image:: https://img.shields.io/pypi/wheel/django-graphql-social.svg
+.. |Wheel| image:: https://img.shields.io/pypi/wheel/django-graphql-social-auth.svg
    :target: https://pypi.python.org/pypi/django-graphql-social
 
-.. |Build Status| image:: https://travis-ci.org/flavors/django-graphql-social.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/flavors/django-graphql-social-auth.svg?branch=master
    :target: https://travis-ci.org/flavors/django-graphql-social
 
-.. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-graphql-social.svg
+.. |Codecov| image:: https://img.shields.io/codecov/c/github/flavors/django-graphql-social-auth.svg
    :target: https://codecov.io/gh/flavors/django-graphql-social
 
 .. |Code Climate| image:: https://api.codeclimate.com/v1/badges/6f8b21f374ecb7918991/maintainability

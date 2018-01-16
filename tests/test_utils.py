@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from graphql_social import utils
+from graphql_social_auth import utils
 
 
 class UtilsTests(TestCase):

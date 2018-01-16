@@ -1,3 +1,3 @@
 [run]
-source = graphql_social
+source = graphql_social_auth
 branch = True
