@@ -24,7 +24,7 @@ Install last stable version from Pypi.
 
 .. code:: sh
 
-    pip install django-graphql-social
+    pip install django-graphql-social-auth
 
 
 See the `documentation`_ for further guidance on setting *Python Social Auth*.
@@ -43,7 +43,9 @@ Add the ``SocialAuth`` mutation to your GraphQL schema.
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.SocialAuth.Field()
 
-Authenticate via *access_token*.
+`Session`_ authentication via *access_token*.
+
+.. _documentation: https://docs.djangoproject.com/en/2.0/topics/http/sessions/
 
 
 .. code:: graphql
