@@ -4,8 +4,11 @@ from . import mixins, types
 from .decorators import social_auth
 
 
-class SocialAuth(mixins.DoAuthMixin, graphene.Mutation):
+class SocialAuthMutation(mixins.SocialAuthMixin, graphene.Mutation):
     social = graphene.Field(types.SocialType)
+
+    class Meta:
+        abstract = True
 
     class Arguments:
         provider = graphene.String(required=True)
@@ -13,9 +16,13 @@ class SocialAuth(mixins.DoAuthMixin, graphene.Mutation):
 
     @classmethod
     @social_auth
-    def mutate(cls, root, *args, **kwargs):
-        return cls.do_auth(*args, **kwargs)
+    def mutate(cls, root, info, social, **kwargs):
+        return cls.do_auth(info, social, **kwargs)
 
 
-class SocialAuthJWT(mixins.SocialAuthJWTMixin, SocialAuth):
+class SocialAuth(mixins.DoAuthMixin, SocialAuthMutation):
+    """Social Auth Mutation"""
+
+
+class SocialAuthJWT(mixins.DoAuthJWTMixin, SocialAuthMutation):
     """Social Auth for JWT (JSON Web Token)"""

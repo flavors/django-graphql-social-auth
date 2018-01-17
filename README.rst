@@ -65,6 +65,8 @@ JSON Web Token (JWT)
 
 Authentication solution based on `JSON Web Token`_.
 
+.. _JSON Web Token: https://jwt.io/
+
 Install additional requirements.
 
 .. code:: sh
@@ -97,8 +99,6 @@ Authenticate via *access_token* to obtain a JSON Web Token.
       }
     }
 
-.. _JSON Web Token: https://jwt.io/
-
 
 Relay
 -----
@@ -125,7 +125,7 @@ Customizing
 
 Some kinds of projects may have authentication requirements for which ``SocialAuth`` mutation is not always appropriate.
 
-You can override the default *payload* by providing a subclass of ``SocialAuth`` or ``SocialAuthJWT``.
+You can override the default *payload* by providing a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation``.
 
 .. code:: python
 
@@ -133,13 +133,28 @@ You can override the default *payload* by providing a subclass of ``SocialAuth``
     import graphql_social_auth
 
 
-    class SocialAuth(graphql_social_auth.SocialAuth):
+    class SocialAuth(graphql_social_auth.SocialAuthMutation):
         user = graphene.Field(UserType)
 
         @classmethod
         def do_auth(cls, info, social, **kwargs):
-            return cls(social=social, user=social.user)
+            return cls(user=social.user)
 
+
+Authenticate via *access_token* to obtain the *user id*.
+
+.. code:: graphql
+
+    mutation SocialAuth($provider: String!, $accessToken: String!) {
+      socialAuth(provider: $provider, accessToken: $accessToken) {
+        social {
+          uid
+        }
+        user {
+          id
+        }
+      }
+    }
 
 ----
 
