@@ -9,7 +9,7 @@ from .decorators import social_auth_mock
 
 class DecoratorsTests(TestCase):
 
-    def test_missing_backend(self):
+    def test_psa_missing_backend(self):
 
         @decorators.social_auth
         def wrapped(self, root, info, provider, *args):
@@ -20,9 +20,10 @@ class DecoratorsTests(TestCase):
         with self.assertRaises(exceptions.GraphQLSocialError):
             wrapped(self, mock, mock, 'unknown', '-token-')
 
-    def test_do_auth_user_not_found(self):
-        @social_auth_mock
-        @override_settings(SOCIAL_AUTH_PIPELINE=[])
+    @social_auth_mock
+    @override_settings(SOCIAL_AUTH_PIPELINE=[])
+    def test_psa_user_not_found(self, *args):
+
         @decorators.social_auth
         def wrapped(self, root, info, provider, *args):
             """Social auth decorated function"""
