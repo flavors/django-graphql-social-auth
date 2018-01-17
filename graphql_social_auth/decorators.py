@@ -13,7 +13,6 @@ from . import exceptions
 def psa(f):
     @wraps(f)
     def wrapper(cls, root, info, provider, access_token, **kwargs):
-        import pdb; pdb.set_trace()
         strategy = load_strategy(info.context)
         try:
             backend = load_backend(strategy, provider, redirect_uri=None)
