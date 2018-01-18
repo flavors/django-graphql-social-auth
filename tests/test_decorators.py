@@ -17,7 +17,7 @@ class DecoratorsTests(TestCase):
 
         mock = MagicMock()
 
-        with self.assertRaises(exceptions.GraphQLSocialError):
+        with self.assertRaises(exceptions.GraphQLSocialAuthError):
             wrapped(self, mock, mock, 'unknown', '-token-')
 
     @social_auth_mock
@@ -29,5 +29,5 @@ class DecoratorsTests(TestCase):
             """Social auth decorated function"""
 
         mock = MagicMock()
-        with self.assertRaises(exceptions.GraphQLSocialError):
+        with self.assertRaises(exceptions.GraphQLSocialAuthError):
             wrapped(self, mock, mock, 'google-oauth2', '-token-')

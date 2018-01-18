@@ -1,3 +1,3 @@
 
-class GraphQLSocialError(Exception):
+class GraphQLSocialAuthError(Exception):
     """Raise GraphQL Social exception"""
