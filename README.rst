@@ -123,9 +123,7 @@ Complete support for `Relay`_.
 Customizing
 -----------
 
-Some kinds of projects may have authentication requirements for which ``SocialAuth`` mutation is not always appropriate.
-
-You can override the default *payload* by providing a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation``.
+If you want to customize the ``SocialAuth`` behavior, you'll need to customize the ``.do_auth()`` method on a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation.``
 
 .. code:: python
 
