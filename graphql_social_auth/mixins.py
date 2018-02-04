@@ -15,7 +15,7 @@ class SocialAuthMixin(object):
 class DoAuthMixin(object):
 
     @classmethod
-    def do_auth(cls, info, social, **kwargs):
+    def do_auth(cls, *args, **kwargs):
         return cls()
 
 
