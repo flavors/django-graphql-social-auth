@@ -20,7 +20,7 @@ class GraphQLClient(GraphQLRequestFactory, Client):
         self._schema = graphene.Schema(**kwargs)
 
 
-class GraphQLSocialTestCase(testcases.TestCase):
+class GraphQLSocialAuthTestCase(testcases.TestCase):
 
     class Query(graphene.ObjectType):
         test = GenericScalar()
