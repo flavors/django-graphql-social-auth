@@ -5,8 +5,6 @@ Django GraphQL Social Auth
 
 `Python Social Auth`_ support for `Django GraphQL`_
 
-
-.. _Python Social Auth: http://python-social-auth.readthedocs.io/
 .. _Django GraphQL: https://github.com/graphql-python/graphene-django
 
 
@@ -156,9 +154,10 @@ Authenticate via *access_token* to obtain the *user id*.
 
 ----
 
-Gracias `Matías`_.
+Gracias `@omab`_ / `Python Social Auth`_.
 
-.. _Matías: https://github.com/omab
+.. _@omab: https://github.com/omab
+.. _Python Social Auth: http://python-social-auth.readthedocs.io/
 
 
 .. |Pypi| image:: https://img.shields.io/pypi/v/django-graphql-social-auth.svg
