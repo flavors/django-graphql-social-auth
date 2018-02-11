@@ -155,7 +155,7 @@ Authenticate via *accessToken* to obtain the *user id*.
 Project template
 ----------------
 
-There is a `Django project template` to start a demo project.
+There is a `Django project template`_ to start a demo project.
 
 .. _Django project template: https://github.com/ice-creams/graphql-social-auth-template
 
