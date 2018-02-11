@@ -19,7 +19,7 @@ class ResolveMixin(object):
         return cls()
 
 
-class DoAuthJWTMixin(object):
+class JSONWebTokenMixin(object):
     token = graphene.String()
 
     @classmethod

@@ -24,5 +24,5 @@ class SocialAuth(mixins.ResolveMixin, SocialAuthMutation):
     """Social Auth Mutation"""
 
 
-class SocialAuthJWT(mixins.DoAuthJWTMixin, SocialAuthMutation):
+class SocialAuthJWT(mixins.JSONWebTokenMixin, SocialAuthMutation):
     """Social Auth for JWT (JSON Web Token)"""
