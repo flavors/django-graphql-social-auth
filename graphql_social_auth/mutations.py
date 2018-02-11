@@ -17,10 +17,10 @@ class SocialAuthMutation(mixins.SocialAuthMixin, graphene.Mutation):
     @classmethod
     @social_auth
     def mutate(cls, root, info, social, **kwargs):
-        return cls.do_auth(info, social, **kwargs)
+        return cls.resolve(root, info, social, **kwargs)
 
 
-class SocialAuth(mixins.DoAuthMixin, SocialAuthMutation):
+class SocialAuth(mixins.ResolveMixin, SocialAuthMutation):
     """Social Auth Mutation"""
 
 

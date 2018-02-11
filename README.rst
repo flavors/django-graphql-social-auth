@@ -121,7 +121,7 @@ Complete support for `Relay`_.
 Customizing
 -----------
 
-If you want to customize the ``SocialAuth`` behavior, you'll need to customize the ``.do_auth()`` method on a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation.``
+If you want to customize the ``SocialAuth`` behavior, you'll need to customize the ``.resolve()`` method on a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation.``
 
 .. code:: python
 
@@ -133,7 +133,7 @@ If you want to customize the ``SocialAuth`` behavior, you'll need to customize t
         user = graphene.Field(UserType)
 
         @classmethod
-        def do_auth(cls, info, social, **kwargs):
+        def resolve(cls, root, info, social, **kwargs):
             return cls(user=social.user)
 
 

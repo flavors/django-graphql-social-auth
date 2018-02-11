@@ -19,10 +19,10 @@ class SocialAuthMutation(mixins.SocialAuthMixin,
     @classmethod
     @social_auth
     def mutate_and_get_payload(cls, root, info, social, **kwargs):
-        return cls.do_auth(info, social, **kwargs)
+        return cls.resolve(root, info, social, **kwargs)
 
 
-class SocialAuth(mixins.DoAuthMixin, SocialAuthMutation):
+class SocialAuth(mixins.ResolveMixin, SocialAuthMutation):
     """Social Auth Mutation for Relay"""
 
 
