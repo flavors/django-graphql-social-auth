@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+0.1.0
+-----
+
+Changes:
+ - Renamed do_auth() to resolve()
+
+
 0.0.3
 -----
 
