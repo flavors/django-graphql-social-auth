@@ -29,7 +29,6 @@ See the `documentation`_ for further guidance on setting *Python Social Auth*.
 
 .. _documentation: http://python-social-auth.readthedocs.io/en/latest/configuration/django.html
 
-
 Add the ``SocialAuth`` mutation to your GraphQL schema.
 
 .. code:: python
@@ -41,7 +40,7 @@ Add the ``SocialAuth`` mutation to your GraphQL schema.
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.SocialAuth.Field()
 
-`Session`_ authentication via *access_token*.
+`Session`_ authentication via *accessToken*.
 
 .. _Session: https://docs.djangoproject.com/en/2.0/topics/http/sessions/
 
@@ -84,7 +83,7 @@ Add the ``SocialAuthJWT`` mutation to your GraphQL schema.
         social_auth = graphql_social_auth.SocialAuthJWT.Field()
 
 
-Authenticate via *access_token* to obtain a JSON Web Token.
+Authenticate via *accessToken* to obtain a JSON Web Token.
 
 .. code:: graphql
 
@@ -137,7 +136,7 @@ If you want to customize the ``SocialAuth`` behavior, you'll need to customize t
             return cls(user=social.user)
 
 
-Authenticate via *access_token* to obtain the *user id*.
+Authenticate via *accessToken* to obtain the *user id*.
 
 .. code:: graphql
 
