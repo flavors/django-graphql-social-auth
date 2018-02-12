@@ -7,7 +7,7 @@ from promise import Promise, is_thenable
 from social_core.exceptions import MissingBackend
 from social_django.utils import load_backend, load_strategy
 
-from . import exceptions
+from . import exceptions, mixins
 
 
 def psa(f):
@@ -24,7 +24,9 @@ def psa(f):
         if user is None:
             raise exceptions.GraphQLSocialAuthError(_('Invalid token'))
 
-        login(info.context, user)
+        if not issubclass(cls, mixins.JSONWebTokenMixin):
+            login(info.context, user)
+
         social = user.social_auth.get(provider=provider)
 
         return f(cls, root, info, social, **kwargs)
