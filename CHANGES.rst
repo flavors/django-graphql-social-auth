@@ -2,6 +2,13 @@ Changelog
 =========
 
 
+0.1.1
+-----
+
+Changes:
+ - Removed login() usage for JSON Web Token
+
+
 0.1.0
 -----
 
