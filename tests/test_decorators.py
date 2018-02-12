@@ -2,6 +2,8 @@ from unittest.mock import MagicMock
 
 from django.test import TestCase, override_settings
 
+from promise import Promise, is_thenable
+
 from graphql_social_auth import decorators, exceptions
 
 from .decorators import social_auth_mock
@@ -13,7 +15,7 @@ class DecoratorsTests(TestCase):
 
         @decorators.social_auth
         def wrapped(self, root, info, provider, *args):
-            """Social auth decorated function"""
+            """Social Auth decorated function"""
 
         mock = MagicMock()
 
@@ -26,7 +28,7 @@ class DecoratorsTests(TestCase):
 
         @decorators.social_auth
         def wrapped(self, root, info, provider, *args):
-            """Social auth decorated function"""
+            """Social Auth decorated function"""
 
         mock = MagicMock()
         with self.assertRaises(exceptions.GraphQLSocialAuthError):
