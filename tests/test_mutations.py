@@ -6,7 +6,7 @@ from . import mixins
 from .testcases import GraphQLSocialAuthTestCase
 
 
-class MutationsTests(mixins.SocialAuthTestsMixin, GraphQLSocialAuthTestCase):
+class SocialAuthTests(mixins.SocialAuthTestsMixin, GraphQLSocialAuthTestCase):
 
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.SocialAuth.Field()
