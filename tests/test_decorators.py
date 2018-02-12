@@ -33,3 +33,15 @@ class DecoratorsTests(TestCase):
         mock = MagicMock()
         with self.assertRaises(exceptions.GraphQLSocialAuthError):
             wrapped(self, mock, mock, 'google-oauth2', '-token-')
+
+    @social_auth_mock
+    def test_social_auth_thenable(self, *args):
+
+        @decorators.social_auth
+        def wrapped(self, root, info, provider, *args):
+            return Promise()
+
+        mock = MagicMock()
+        result = wrapped(TestCase, mock, mock, 'google-oauth2', '-token-')
+
+        self.assertTrue(is_thenable(result))
