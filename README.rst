@@ -44,6 +44,10 @@ Add the ``SocialAuth`` mutation to your GraphQL schema.
 
 .. _Session: https://docs.djangoproject.com/en/2.0/topics/http/sessions/
 
+- ``provider``: provider name from `Authentication backend list`_.
+- ``accessToken``: third-party (Google, Facebook...) OAuth token obtained with any OAuth client.
+
+.. _Authentication backend list: https://github.com/flavors/django-graphql-social-auth/wiki/Authentication-backends
 
 .. code:: graphql
 
@@ -113,14 +117,27 @@ Complete support for `Relay`_.
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.relay.SocialAuth.Field()
 
+``graphql_social_auth.relay.SocialAuthJWT.Field()`` for `JSON Web Token (JWT)`_ authentication.
 
-``graphql_social_auth.relay.SocialAuthJWT`` for `JSON Web Token (JWT)`_ authentication.
+`Relay mutations`_ only accepts one argument named *input*:
+
+.. _Relay mutations: https://facebook.github.io/relay/graphql/mutations.htm
+
+.. code:: graphql
+
+    mutation SocialAuth($provider: String!, $accessToken: String!) {
+      socialAuth(input:{provider: $provider, accessToken: $accessToken}) {
+        social {
+          uid
+        }
+      }
+    }
 
 
 Customizing
 -----------
 
-If you want to customize the ``SocialAuth`` behavior, you'll need to customize the ``.resolve()`` method on a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation.``
+If you want to customize the ``SocialAuth`` behavior, you'll need to customize the ``resolve()`` method on a subclass of ``SocialAuthMutation`` or ``.relay.SocialAuthMutation.``
 
 .. code:: python
 
