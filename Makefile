@@ -15,8 +15,7 @@ coverage:
 		--cov graphql_social_auth\
 		--cov-config .coveragerc\
 		--cov-report term\
-		--cov-report xml\
-		tests
+		--cov-report xml
 
 test-all:
 	@tox
