@@ -29,6 +29,6 @@ class JSONWebTokenMixin(object):
         except ImportError:
             raise ImportError(
                 'django-graphql-jwt not installed.\n'
-                'Use `pip install \'django-graphql-social-auth[jwt]\'`.'
-            )
+                'Use `pip install \'django-graphql-social-auth[jwt]\'`.')
+
         return cls(token=get_token(social.user))
