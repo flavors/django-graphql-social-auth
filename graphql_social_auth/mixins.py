@@ -1,7 +1,7 @@
 import graphene
 
 
-class SocialAuthMixin(object):
+class SocialAuthMixin:
 
     @classmethod
     def __init_subclass_with_meta__(cls, name=None, **options):
@@ -12,14 +12,14 @@ class SocialAuthMixin(object):
         super().__init_subclass_with_meta__(name=name, **options)
 
 
-class ResolveMixin(object):
+class ResolveMixin:
 
     @classmethod
     def resolve(cls, *args, **kwargs):
         return cls()
 
 
-class JSONWebTokenMixin(object):
+class JSONWebTokenMixin:
     token = graphene.String()
 
     @classmethod
