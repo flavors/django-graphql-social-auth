@@ -24,6 +24,12 @@ def psa(f):
         if user is None:
             raise exceptions.GraphQLSocialAuthError(_('Invalid token'))
 
+        user_model = strategy.storage.user.user_model()
+
+        if not isinstance(user, user_model):
+            raise exceptions.GraphQLSocialAuthError(
+                _('`{}` is not a user instance').format(type(user).__name__))
+
         if not issubclass(cls, mixins.JSONWebTokenMixin):
             login(info.context, user)
 
@@ -43,7 +49,6 @@ def social_auth(f):
 
         result = f(cls, root, info, social, **kwargs)
 
-        # Improved mutation with thenable check
         if is_thenable(result):
             return Promise.resolve(result).then(on_resolve)
         return on_resolve(result)
