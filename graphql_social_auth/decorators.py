@@ -22,13 +22,13 @@ def psa(f):
         user = backend.do_auth(access_token)
 
         if user is None:
-            raise exceptions.GraphQLSocialAuthError(_('Invalid token'))
+            raise exceptions.InvalidTokenError(_('Invalid token'))
 
         user_model = strategy.storage.user.user_model()
 
         if not isinstance(user, user_model):
-            raise exceptions.GraphQLSocialAuthError(
-                _('`{}` is not a user instance').format(type(user).__name__))
+            msg = _('`{}` is not a user instance').format(type(user).__name__)
+            raise exceptions.DoAuthError(msg, user)
 
         if not issubclass(cls, mixins.JSONWebTokenMixin):
             login(info.context, user)
