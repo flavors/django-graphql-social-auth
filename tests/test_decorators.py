@@ -28,7 +28,7 @@ class DecoratorsTests(TestCase):
         def wrapped(cls, root, info, provider, *args):
             """Social Auth decorated function"""
 
-        with self.assertRaises(exceptions.GraphQLSocialAuthError):
+        with self.assertRaises(exceptions.InvalidTokenError):
             wrapped(self, None, Mock(), 'google-oauth2', 'token')
 
     @social_auth_mock
