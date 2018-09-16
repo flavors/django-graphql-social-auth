@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django GraphQL Social Auth\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-20 01:07+0700\n"
+"POT-Creation-Date: 2018-09-16 23:17+0700\n"
 "PO-Revision-Date: 2018-01-15 02:30+0530\n"
 "Last-Translator: mongkok <domake.io@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -27,6 +27,6 @@ msgstr "Proveedor no encontrado"
 msgid "Invalid token"
 msgstr "Token inválido"
 
-#: decorators.py:31
+#: decorators.py:30
 msgid "`{}` is not a user instance"
 msgstr "`{}` no es una instancia de usuario"
