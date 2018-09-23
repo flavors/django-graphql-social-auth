@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.2
+-----
+
+* Added DoAuthError exception
+
 0.1.1
 -----
 
