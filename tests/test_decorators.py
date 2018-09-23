@@ -1,4 +1,4 @@
-from unittest.mock import MagicMock, Mock
+from unittest.mock import MagicMock, Mock, patch
 
 from django.test import TestCase, override_settings
 
@@ -22,13 +22,24 @@ class DecoratorsTests(TestCase):
 
     @social_auth_mock
     @override_settings(SOCIAL_AUTH_PIPELINE=[])
-    def test_psa_user_not_found(self, *args):
+    def test_psa_invalid_token(self, *args):
 
         @decorators.social_auth
         def wrapped(cls, root, info, provider, *args):
             """Social Auth decorated function"""
 
-        with self.assertRaises(exceptions.GraphQLSocialAuthError):
+        with self.assertRaises(exceptions.InvalidTokenError):
+            wrapped(self, None, Mock(), 'google-oauth2', 'token')
+
+    @social_auth_mock
+    @patch('social_core.backends.oauth.BaseOAuth2.do_auth')
+    def test_psa_do_auth_error(self, *args):
+
+        @decorators.social_auth
+        def wrapped(cls, root, info, provider, *args):
+            """Social Auth decorated function"""
+
+        with self.assertRaises(exceptions.DoAuthError):
             wrapped(self, None, Mock(), 'google-oauth2', 'token')
 
     @social_auth_mock
