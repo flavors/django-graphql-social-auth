@@ -12,3 +12,7 @@ engines:
 ratings:
   paths:
   - "**.py"
+checks:
+  argument-count:
+    config:
+      threshold: 5
