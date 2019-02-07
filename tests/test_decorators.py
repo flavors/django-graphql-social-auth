@@ -1,12 +1,13 @@
-from unittest.mock import MagicMock, Mock, patch
+from unittest.mock import patch
 
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 from promise import Promise, is_thenable
 
 from graphql_social_auth import decorators, exceptions
 
 from .decorators import social_auth_mock
+from .testcases import TestCase
 
 
 class DecoratorsTests(TestCase):
@@ -18,7 +19,7 @@ class DecoratorsTests(TestCase):
             """Social Auth decorated function"""
 
         with self.assertRaises(exceptions.GraphQLSocialAuthError):
-            wrapped(self, None, Mock(), 'unknown', 'token')
+            wrapped(self, None, self.info(), 'unknown', 'token')
 
     @social_auth_mock
     @override_settings(SOCIAL_AUTH_PIPELINE=[])
@@ -29,7 +30,7 @@ class DecoratorsTests(TestCase):
             """Social Auth decorated function"""
 
         with self.assertRaises(exceptions.InvalidTokenError):
-            wrapped(self, None, Mock(), 'google-oauth2', 'token')
+            wrapped(self, None, self.info(), 'google-oauth2', 'token')
 
     @social_auth_mock
     @patch('social_core.backends.oauth.BaseOAuth2.do_auth')
@@ -40,7 +41,7 @@ class DecoratorsTests(TestCase):
             """Social Auth decorated function"""
 
         with self.assertRaises(exceptions.DoAuthError):
-            wrapped(self, None, Mock(), 'google-oauth2', 'token')
+            wrapped(self, None, self.info(), 'google-oauth2', 'token')
 
     @social_auth_mock
     def test_social_auth_thenable(self, *args):
@@ -49,6 +50,6 @@ class DecoratorsTests(TestCase):
         def wrapped(cls, root, info, provider, *args):
             return Promise()
 
-        result = wrapped(TestCase, None, MagicMock(), 'google-oauth2', 'token')
+        result = wrapped(TestCase, None, self.info(), 'google-oauth2', 'token')
 
         self.assertTrue(is_thenable(result))
