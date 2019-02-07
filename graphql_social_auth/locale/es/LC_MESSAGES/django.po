@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django GraphQL Social Auth\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-16 23:17+0700\n"
+"POT-Creation-Date: 2019-02-07 22:58+0700\n"
 "PO-Revision-Date: 2018-01-15 02:30+0530\n"
 "Last-Translator: mongkok <domake.io@gmail.com>\n"
 "Language-Team: Spanish\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: decorators.py:20
+#: decorators.py:21
 msgid "Provider not found"
 msgstr "Proveedor no encontrado"
 
-#: decorators.py:25
+#: decorators.py:31
 msgid "Invalid token"
 msgstr "Token inválido"
 
-#: decorators.py:30
+#: decorators.py:36
 msgid "`{}` is not a user instance"
 msgstr "`{}` no es una instancia de usuario"
