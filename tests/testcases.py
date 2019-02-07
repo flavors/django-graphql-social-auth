@@ -1,16 +1,15 @@
 from django.test import Client, RequestFactory, testcases
 
 import graphene
-from graphene.types.generic import GenericScalar
 
 
-class GraphQLRequestFactory(RequestFactory):
+class SchemaRequestFactory(RequestFactory):
 
     def execute(self, query, **variables):
-        return self._schema.execute(query, variable_values=variables)
+        return self._schema.execute(query, variables=variables)
 
 
-class GraphQLClient(GraphQLRequestFactory, Client):
+class SchemaClient(SchemaRequestFactory, Client):
 
     def __init__(self, **defaults):
         super().__init__(**defaults)
@@ -20,13 +19,9 @@ class GraphQLClient(GraphQLRequestFactory, Client):
         self._schema = graphene.Schema(**kwargs)
 
 
-class GraphQLSocialAuthTestCase(testcases.TestCase):
-
-    class Query(graphene.ObjectType):
-        test = GenericScalar()
-
+class SchemaTestCase(testcases.TestCase):
     Mutations = None
-    client_class = GraphQLClient
+    client_class = SchemaClient
 
     def setUp(self):
-        self.client.schema(query=self.Query, mutation=self.Mutations)
+        self.client.schema(mutation=self.Mutations)

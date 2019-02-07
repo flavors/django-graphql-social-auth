@@ -11,7 +11,7 @@ class SocialAuthTests(mixins.SocialAuthMixin, SchemaTestCase):
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.relay.SocialAuth.Field()
 
-    def execute(self, input):
+    def execute(self, variables):
         query = '''
         mutation SocialAuth($input: SocialAuthInput!) {
           socialAuth(input: $input) {
@@ -23,7 +23,7 @@ class SocialAuthTests(mixins.SocialAuthMixin, SchemaTestCase):
           }
         }'''
 
-        return self.client.execute(query, input=input)
+        return self.client.execute(query, input=variables)
 
 
 class SocialAuthJWTTests(mixins.SocialAuthMixin,
@@ -33,7 +33,7 @@ class SocialAuthJWTTests(mixins.SocialAuthMixin,
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.relay.SocialAuthJWT.Field()
 
-    def execute(self, input):
+    def execute(self, variables):
         query = '''
         mutation SocialAuth($input: SocialAuthJWTInput!) {
           socialAuth(input: $input) {
@@ -46,4 +46,4 @@ class SocialAuthJWTTests(mixins.SocialAuthMixin,
           }
         }'''
 
-        return self.client.execute(query, input=input)
+        return self.client.execute(query, input=variables)
