@@ -3,10 +3,10 @@ import graphene
 import graphql_social_auth
 
 from . import mixins
-from .testcases import GraphQLSocialAuthTestCase
+from .testcases import SchemaTestCase
 
 
-class SocialAuthTests(mixins.SocialAuthTestsMixin, GraphQLSocialAuthTestCase):
+class SocialAuthTests(mixins.SocialAuthMixin, SchemaTestCase):
 
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.relay.SocialAuth.Field()
@@ -26,9 +26,9 @@ class SocialAuthTests(mixins.SocialAuthTestsMixin, GraphQLSocialAuthTestCase):
         return self.client.execute(query, input=input)
 
 
-class SocialAuthJWTTests(mixins.SocialAuthTestsMixin,
-                         mixins.SocialAuthJWTTestsMixin,
-                         GraphQLSocialAuthTestCase):
+class SocialAuthJWTTests(mixins.SocialAuthMixin,
+                         mixins.SocialAuthJWTMixin,
+                         SchemaTestCase):
 
     class Mutations(graphene.ObjectType):
         social_auth = graphql_social_auth.relay.SocialAuthJWT.Field()

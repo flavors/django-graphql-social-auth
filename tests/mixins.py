@@ -4,7 +4,7 @@ from unittest.mock import patch
 from .decorators import social_auth_mock
 
 
-class SocialAuthTestsMixin:
+class SocialAuthMixin:
 
     @social_auth_mock
     @patch('graphql_social_auth.decorators.login')
@@ -18,7 +18,7 @@ class SocialAuthTestsMixin:
         self.assertEqual('test', social['uid'])
 
 
-class SocialAuthJWTTestsMixin:
+class SocialAuthJWTMixin:
 
     @social_auth_mock
     @patch.dict(sys.modules, {'graphql_jwt.shortcuts': None})
