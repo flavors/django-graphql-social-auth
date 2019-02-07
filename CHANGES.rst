@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.4
+-----
+
+* Updated locales
+
 0.1.3
 -----
 
