@@ -5,8 +5,8 @@ from django.core.handlers.wsgi import WSGIRequest
 from django.test import Client, RequestFactory, testcases
 
 import graphene
-from graphql.execution.base import ResolveInfo
 from graphene_django.settings import graphene_settings
+from graphql.execution.base import ResolveInfo
 
 
 class SchemaRequestFactory(RequestFactory):
