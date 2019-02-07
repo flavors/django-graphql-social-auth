@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.1.3
+-----
+
+* Replaced django login with social _do_login
+* Added authenticated user to backend.do_auth
+
 0.1.2
 -----
 
