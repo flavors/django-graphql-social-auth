@@ -20,7 +20,12 @@ def psa(f):
         except MissingBackend:
             raise exceptions.GraphQLSocialAuthError(_('Provider not found'))
 
-        user = backend.do_auth(access_token)
+        if info.context.user.is_authenticated:
+            authenticated_user = info.context.user
+        else:
+            authenticated_user = None
+
+        user = backend.do_auth(access_token, user=authenticated_user)
 
         if user is None:
             raise exceptions.InvalidTokenError(_('Invalid token'))
