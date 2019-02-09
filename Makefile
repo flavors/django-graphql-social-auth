@@ -10,7 +10,6 @@ test:
 
 coverage:
 	@pytest\
-		--flake8\
 		--verbose\
 		--cov graphql_social_auth\
 		--cov-config .coveragerc\
