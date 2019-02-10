@@ -33,9 +33,6 @@ class RequestClient(Client):
 
 class SchemaClient(SchemaRequestFactory, RequestClient):
 
-    def schema(self, **kwargs):
-        self._schema = graphene.Schema(**kwargs)
-
     def execute(self, query, variables=None, **extra):
         context = self.post('/', **extra)
         return super().execute(query, context=context, variables=variables)
