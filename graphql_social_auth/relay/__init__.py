@@ -1,3 +1,3 @@
-from .mutations import SocialAuthMutation, SocialAuth, SocialAuthJWT
+from .mutations import SocialAuth, SocialAuthJWT, SocialAuthMutation
 
 __all__ = ['SocialAuthMutation', 'SocialAuth', 'SocialAuthJWT']

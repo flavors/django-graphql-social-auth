@@ -1,8 +1,8 @@
 import graphene
 
-from . import nodes
 from .. import mixins, mutations
 from ..decorators import social_auth
+from . import nodes
 
 
 class SocialAuthMutation(mixins.SocialAuthMixin,
