@@ -1,6 +1,6 @@
 from functools import wraps
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from promise import Promise, is_thenable
 from social_core.exceptions import MissingBackend
