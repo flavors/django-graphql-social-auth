@@ -13,6 +13,7 @@ class CamelJSON(GenericScalar):
 
     class Meta:
         name = 'SocialCamelJSON'
+        fields = '__all__'
 
 
 class SocialType(DjangoObjectType):
