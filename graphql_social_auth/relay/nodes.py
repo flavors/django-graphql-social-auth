@@ -13,3 +13,4 @@ class SocialNode(types.SocialType):
             'uid': ['exact', 'in'],
             'provider': ['exact', 'in'],
         }
+        fields = '__all__'
